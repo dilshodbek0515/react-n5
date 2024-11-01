@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import "./Menu.scss"
 import axios from "axios"
+import { toast } from "react-toastify"
 const BASE_URL = "https://dummyjson.com"
 const Menu = () => {
     const [products, setProducts] = useState(null)
@@ -16,7 +17,7 @@ const Menu = () => {
 
     const productsItems = products?.map((pro) => (
         <div className="pro_card" key={pro.id}>
-            <img className="pro_img" src={pro.images[0]} alt="pro_img" />
+            <img onClick={() => toast.info(pro.brand)} className="pro_img" src={pro.images[0]} alt="pro_img" />
             <div className="name_wrap">
                 <h3>{pro.title}</h3>
                 <strong>{pro.price}$</strong>
